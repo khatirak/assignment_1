@@ -71,3 +71,44 @@ window.addEventListener('scroll', function() {
         }
     });
 });
+
+// Photo modal functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('photoModal');
+    const modalImg = document.getElementById('modalImage');
+    const modalCaption = document.getElementById('modalCaption');
+    const closeModal = document.querySelector('.close-modal');
+    const galleryPhotos = document.querySelectorAll('.gallery-photo');
+    
+    // Open modal when clicking on gallery photos
+    galleryPhotos.forEach(photo => {
+        photo.addEventListener('click', function() {
+            modal.style.display = 'block';
+            modalImg.src = this.getAttribute('data-full');
+            modalCaption.textContent = this.alt;
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+    });
+    
+    // Close modal when clicking the X
+    closeModal.addEventListener('click', function() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restore scrolling
+    });
+    
+    // Close modal when clicking outside the image
+    modal.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+    });
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && modal.style.display === 'block') {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+    });
+});

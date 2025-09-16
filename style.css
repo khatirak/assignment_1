@@ -43,7 +43,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 70px;
+    height: 120px;
 }
 
 .nav-logo h2 {
@@ -56,19 +56,19 @@ body {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 40px;
+    gap: 60px;
 }
 
 .nav-link {
     text-decoration: none;
     color: var(--text-dark);
-    font-size: 1rem;
+    font-size: 1.6rem;
     font-weight: 400;
     transition: color 0.3s ease;
     position: relative;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 16px;
 }
 
 .nav-link:hover,
@@ -94,8 +94,8 @@ body {
 
 /* Navigation icons */
 .nav-icon {
-    width: 20px;
-    height: 20px;
+    width: 50px;
+    height: 50px;
     object-fit: contain;
     transition: transform 0.3s ease;
 }
@@ -121,7 +121,7 @@ body {
 
 /* Main content */
 .main-content {
-    margin-top: 70px;
+    margin-top: 120px;
 }
 
 /* Hero section */
@@ -211,7 +211,7 @@ body {
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 70px;
+        top: 120px;
         flex-direction: column;
         background-color: var(--white);
         width: 100%;
@@ -273,8 +273,8 @@ html {
 
 /* Video Section */
 .video-section {
-    padding: 80px 0;
-    background: linear-gradient(135deg, var(--pastel-pink) 0%, var(--pastel-purple) 100%);
+    padding: 350px 0 150px 0;
+    background-color: #6f4e37;
 }
 
 .video-section h2 {
@@ -292,36 +292,47 @@ html {
     align-items: center;
 }
 
-.video-placeholder {
-    background-color: var(--white);
-    border-radius: 20px;
-    padding: 60px 40px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
+.video-container {
+    position: relative;
     width: 100%;
+    border-radius: 0;
+    overflow: visible;
+    box-shadow: none;
 }
 
-.play-button {
-    color: var(--primary-brown);
-    margin-bottom: 20px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
+.video-background {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 0;
+    box-shadow: none;
+    transform: scaleX(2.5) scaleY(1.5);
+    transform-origin: center;
 }
 
-.play-button:hover {
-    transform: scale(1.1);
+.video-embed {
+    position: absolute;
+    top: -30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
-.video-placeholder p {
-    font-size: 1.1rem;
-    color: var(--text-light);
-    font-weight: 400;
+.video-embed iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 15px;
 }
 
 /* Photo Section */
 .photo-section {
-    padding: 80px 0;
+    padding: 100px 0 400px 0;
     background-color: var(--white);
 }
 
@@ -334,39 +345,123 @@ html {
     letter-spacing: 1px;
 }
 
-.photo-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
+.photo-display {
     margin-top: 40px;
 }
 
-.photo-item {
-    text-align: center;
+.display-case {
+    position: relative;
+    width: 100%;
 }
 
-.photo-placeholder {
-    background: linear-gradient(135deg, var(--pastel-yellow) 0%, var(--cream) 100%);
-    border-radius: 15px;
-    padding: 40px 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.photo-placeholder:hover {
-    transform: translateY(-5px);
-}
-
-.photo-placeholder span {
-    font-size: 3rem;
+.display-case-img {
+    width: 100%;
+    height: auto;
+    min-height: 600px;
     display: block;
+    border-radius: 0;
+    box-shadow: none;
+    filter: none;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    transform: scaleX(2) scaleY(1.5);
+    transform-origin: center top;
+    object-fit: cover;
 }
 
-.photo-item p {
-    font-size: 1rem;
-    color: var(--text-dark);
-    font-weight: 400;
+.photo-overlay {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+    padding: 60px 40px;
+    box-sizing: border-box;
+}
+
+.gallery-photo {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border: 3px solid transparent;
+}
+
+.gallery-photo:hover {
+    transform: scale(1.05);
+    border-color: var(--pastel-yellow);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+}
+
+.gallery-photo:active {
+    transform: scale(0.95);
+}
+
+/* Photo Modal */
+.photo-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: var(--white);
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 2001;
+    transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+    color: var(--pastel-yellow);
+}
+
+.modal-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--white);
+    font-size: 1.2rem;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 /* Contact Section */
@@ -471,12 +566,52 @@ html {
         gap: 20px;
     }
     
-    .video-placeholder {
-        padding: 40px 20px;
+    .video-container {
+        max-width: 100%;
+    }
+    
+    .video-embed {
+        width: 70%;
+        height: 70%;
     }
     
     .contact-form {
         padding: 30px 20px;
+    }
+    
+    .photo-overlay {
+        padding: 40px 20px;
+        gap: 15px;
+    }
+    
+    .gallery-photo {
+        height: 150px;
+    }
+    
+    .display-case {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .photo-overlay {
+        padding: 30px 15px;
+        gap: 10px;
+    }
+    
+    .gallery-photo {
+        height: 120px;
+    }
+    
+    .modal-content {
+        max-width: 95%;
+        max-height: 95%;
+    }
+    
+    .close-modal {
+        top: 10px;
+        right: 20px;
+        font-size: 30px;
     }
 }
 
