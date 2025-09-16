@@ -77,19 +77,12 @@ body {
 }
 
 .nav-link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: var(--pastel-yellow);
-    transition: width 0.3s ease;
+    display: none;
 }
 
 .nav-link:hover::after,
 .nav-link.active::after {
-    width: 100%;
+    display: none;
 }
 
 /* Navigation icons */
