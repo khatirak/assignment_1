@@ -68,6 +68,7 @@ body {
 }
 
 .nav-link {
+    font-family: 'Minecraft', 'Roboto', sans-serif;
     text-decoration: none;
     color: var(--text-dark);
     font-size: 2.2rem;
@@ -232,6 +233,7 @@ body {
 }
 
 .story-content h2 {
+    font-family: 'Minecraft', 'Roboto', sans-serif;
     font-size: 3.2rem;
     color: var(--primary-brown);
     margin-bottom: 50px;
@@ -408,6 +410,7 @@ html {
 }
 
 .video-section h2 {
+    font-family: 'Minecraft', 'Roboto', sans-serif;
     font-size: 2.5rem;
     color: var(--primary-brown);
     margin-bottom: 40px;
@@ -467,6 +470,7 @@ html {
 }
 
 .photo-section h2 {
+    font-family: 'Minecraft', 'Roboto', sans-serif;
     font-size: 2.5rem;
     color: var(--primary-brown);
     margin-bottom: 40px;
@@ -612,6 +616,7 @@ html {
 }
 
 .contact-section h2 {
+    font-family: 'Minecraft', 'Roboto', sans-serif;
     font-size: 3.2rem;
     color: var(--primary-brown);
     margin-bottom: 50px;
