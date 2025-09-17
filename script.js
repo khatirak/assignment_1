@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         animateWords('animated-text', 80);
     }, 2000); // Start after the story section fades in
-    
-    setTimeout(() => {
-        animateWords('animated-text-2', 80);
-    }, 4000); // Start second paragraph after first one begins
 });
 
 // Smooth scroll for anchor links
