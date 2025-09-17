@@ -24,6 +24,15 @@ document.addEventListener('DOMContentLoaded', function() {
             navMenu.classList.remove('active');
         }
     });
+    
+    // Animate words in story section
+    setTimeout(() => {
+        animateWords('animated-text', 80);
+    }, 2000); // Start after the story section fades in
+    
+    setTimeout(() => {
+        animateWords('animated-text-2', 80);
+    }, 4000); // Start second paragraph after first one begins
 });
 
 // Smooth scroll for anchor links
@@ -71,6 +80,27 @@ window.addEventListener('scroll', function() {
         }
     });
 });
+
+// Word animation functionality
+function animateWords(elementId, delay = 100) {
+    const element = document.getElementById(elementId);
+    if (!element) return;
+    
+    const text = element.textContent;
+    const words = text.split(' ');
+    
+    // Clear the element
+    element.innerHTML = '';
+    
+    // Create spans for each word
+    words.forEach((word, index) => {
+        const span = document.createElement('span');
+        span.textContent = word + ' ';
+        span.classList.add('word-animate');
+        span.style.animationDelay = `${index * delay}ms`;
+        element.appendChild(span);
+    });
+}
 
 // Photo modal functionality
 document.addEventListener('DOMContentLoaded', function() {
