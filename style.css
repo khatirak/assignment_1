@@ -119,11 +119,32 @@ body {
 
 /* Hero section */
 .hero {
-    background: linear-gradient(135deg, var(--cream) 0%, var(--pastel-yellow) 100%);
-    padding: 100px 0;
-    text-align: center;
     position: relative;
+    height: 100vh;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.hero:hover .hero-bg-image {
+    transform: scale(1.05);
 }
 
 .hero::before {
@@ -133,37 +154,66 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="%23dda0dd" opacity="0.1"/><circle cx="80" cy="40" r="1.5" fill="%23ffb6c1" opacity="0.1"/><circle cx="40" cy="80" r="1" fill="%23f0e68c" opacity="0.1"/></svg>');
-    background-size: 200px 200px;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.6) 100%);
+    z-index: 2;
 }
 
 .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 3;
+    text-align: center;
     max-width: 800px;
     margin: 0 auto;
     padding: 0 20px;
+    animation: fadeInUp 1.2s ease-out;
 }
 
 .hero h1 {
-    font-size: 3.5rem;
-    color: var(--primary-brown);
-    margin-bottom: 20px;
-    font-weight: 300;
-    letter-spacing: 2px;
+    font-size: 6rem;
+    color: #ffffff;
+    margin-bottom: 30px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+    transition: all 0.3s ease;
+}
+
+.hero h1:hover {
+    transform: translateY(-5px);
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
 }
 
 .hero-subtitle {
-    font-size: 1.3rem;
-    color: var(--text-light);
+    font-size: 2.2rem;
+    color: #f5f5f5;
     font-style: italic;
     font-weight: 300;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    transition: all 0.3s ease;
+}
+
+.hero-subtitle:hover {
+    transform: translateY(-3px);
+    color: #ffffff;
 }
 
 /* Story section */
 .story {
     padding: 80px 0;
     background-color: var(--white);
+    opacity: 0;
+    animation: fadeInStory 1.5s ease-out 0.5s forwards;
+}
+
+@keyframes fadeInStory {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .container {
@@ -173,26 +223,50 @@ body {
 }
 
 .story-content h2 {
-    font-size: 2.5rem;
+    font-size: 3.2rem;
     color: var(--primary-brown);
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     text-align: center;
     font-weight: 300;
     letter-spacing: 1px;
+    transition: all 0.4s ease;
+    cursor: default;
+}
+
+.story-content h2:hover {
+    transform: translateY(-3px);
+    color: var(--neutral-brown);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .story-content p {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     color: var(--text-dark);
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     text-align: justify;
-    line-height: 1.8;
+    line-height: 1.9;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.story-content p:hover {
+    transform: translateX(5px);
+    color: var(--neutral-brown);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
 }
 
 .story-content p:first-of-type {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     color: var(--neutral-brown);
     font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.story-content p:first-of-type:hover {
+    transform: translateX(5px);
+    color: var(--primary-brown);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Responsive design */
@@ -219,21 +293,49 @@ body {
         left: 0;
     }
     
+    .hero {
+        height: 80vh;
+    }
+    
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 4rem;
+        letter-spacing: 2px;
     }
     
     .hero-subtitle {
-        font-size: 1.1rem;
+        font-size: 1.6rem;
     }
     
     .story-content h2 {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
     
     .story-content p {
-        font-size: 1rem;
+        font-size: 1.2rem;
         text-align: left;
+    }
+    
+    .story-content p:first-of-type {
+        font-size: 1.3rem;
+    }
+    
+    .contact-section h2 {
+        font-size: 2.5rem;
+    }
+    
+    .contact-item h3 {
+        font-size: 1.2rem;
+        text-align: left;
+    }
+    
+    .contact-item p {
+        font-size: 1.2rem;
+        text-align: left;
+    }
+    
+    .instagram-icon {
+        width: 18px;
+        height: 18px;
     }
 }
 
@@ -246,8 +348,17 @@ body {
         padding: 60px 0;
     }
     
+    .hero {
+        height: 70vh;
+    }
+    
     .hero h1 {
-        font-size: 2rem;
+        font-size: 3rem;
+        letter-spacing: 1px;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.3rem;
     }
     
     .story {
@@ -256,6 +367,23 @@ body {
     
     .container {
         padding: 0 15px;
+    }
+    
+    .contact-section h2 {
+        font-size: 2rem;
+    }
+    
+    .contact-item h3 {
+        font-size: 1.1rem;
+    }
+    
+    .contact-item p {
+        font-size: 1.1rem;
+    }
+    
+    .instagram-icon {
+        width: 16px;
+        height: 16px;
     }
 }
 
@@ -457,19 +585,38 @@ html {
     to { opacity: 1; }
 }
 
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Contact Section */
 .contact-section {
     padding: 80px 0;
-    background: linear-gradient(135deg, var(--cream) 0%, var(--pastel-yellow) 100%);
+    background: #B1CD8F;
 }
 
 .contact-section h2 {
-    font-size: 2.5rem;
+    font-size: 3.2rem;
     color: var(--primary-brown);
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     text-align: center;
     font-weight: 300;
     letter-spacing: 1px;
+    transition: all 0.4s ease;
+    cursor: default;
+}
+
+.contact-section h2:hover {
+    transform: translateY(-3px);
+    color: var(--neutral-brown);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .contact-content {
@@ -486,16 +633,64 @@ html {
 }
 
 .contact-item h3 {
-    font-size: 1.3rem;
-    color: var(--primary-brown);
-    margin-bottom: 15px;
-    font-weight: 500;
+    font-size: 1.4rem;
+    color: var(--text-dark);
+    margin-bottom: 30px;
+    font-weight: 400;
+    text-align: justify;
+    line-height: 1.9;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.contact-item h3:hover {
+    transform: translateX(5px);
+    color: var(--neutral-brown);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
 }
 
 .contact-item p {
-    font-size: 1rem;
+    font-size: 1.4rem;
     color: var(--text-dark);
-    line-height: 1.6;
+    margin-bottom: 30px;
+    text-align: justify;
+    line-height: 1.9;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.contact-item p:hover {
+    transform: translateX(5px);
+    color: var(--neutral-brown);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Instagram Link Styles */
+.instagram-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.instagram-link:hover {
+    color: var(--neutral-brown);
+    transform: translateX(5px);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.instagram-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    transition: all 0.3s ease;
+}
+
+.instagram-link:hover .instagram-icon {
+    transform: scale(1.1);
 }
 
 .contact-form {
@@ -611,6 +806,9 @@ html {
 /* Focus states for accessibility */
 .nav-link:focus,
 .hamburger:focus {
-    outline: 2px solid var(--pastel-purple);
-    outline-offset: 2px;
+    outline: none;
+}
+
+.nav-link:focus {
+    outline: none;
 }
