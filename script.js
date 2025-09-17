@@ -80,9 +80,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeModal = document.querySelector('.close-modal');
     const galleryPhotos = document.querySelectorAll('.gallery-photo');
     
+    // Create audio object for pastry sound
+    const pastrySound = new Audio('sounds/pastry.mp3');
+    
     // Open modal when clicking on gallery photos
     galleryPhotos.forEach(photo => {
         photo.addEventListener('click', function() {
+            // Play the pastry sound
+            pastrySound.currentTime = 0; // Reset to beginning in case it's already playing
+            pastrySound.play().catch(e => {
+                console.log('Audio play failed:', e);
+            });
+            
             modal.style.display = 'block';
             modalImg.src = this.getAttribute('data-full');
             modalCaption.textContent = this.alt;

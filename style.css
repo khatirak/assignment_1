@@ -49,7 +49,7 @@ body {
     margin: 0 auto;
     padding: 0 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     height: 140px;
 }
@@ -64,7 +64,7 @@ body {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 60px;
+    gap: 200px;
 }
 
 .nav-link {
@@ -111,6 +111,8 @@ body {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    position: absolute;
+    right: 20px;
 }
 
 .bar {
@@ -635,23 +637,44 @@ html {
 
 .contact-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    gap: 30px;
     margin-top: 40px;
 }
 
+.contact-logo {
+    flex: 0 0 auto;
+}
+
+.logo-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 0;
+    object-fit: cover;
+    border: 4px solid var(--primary-brown);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+.logo-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+}
+
 .contact-info {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+    display: contents;
 }
 
 .contact-item h3 {
-    font-size: 1.4rem;
+    font-size: 2.2rem;
     color: var(--text-dark);
     margin-bottom: 30px;
     font-weight: 400;
-    text-align: justify;
+    text-align: left;
     line-height: 1.9;
     transition: all 0.3s ease;
     cursor: default;
@@ -664,10 +687,10 @@ html {
 }
 
 .contact-item p {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     color: var(--text-dark);
     margin-bottom: 30px;
-    text-align: justify;
+    text-align: left;
     line-height: 1.9;
     transition: all 0.3s ease;
     cursor: default;
@@ -760,7 +783,12 @@ html {
 @media (max-width: 768px) {
     .contact-content {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 30px;
+    }
+    
+    .logo-image {
+        width: 300px;
+        height: 300px;
     }
     
     .photo-gallery {
