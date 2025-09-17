@@ -1,3 +1,11 @@
+/* Custom Font */
+@font-face {
+    font-family: 'Minecraft';
+    src: url('Minecraft.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* Reset and base styles */
 * {
     margin: 0;
@@ -43,7 +51,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 120px;
+    height: 140px;
 }
 
 .nav-logo h2 {
@@ -62,13 +70,13 @@ body {
 .nav-link {
     text-decoration: none;
     color: var(--text-dark);
-    font-size: 1.6rem;
+    font-size: 2.2rem;
     font-weight: 400;
     transition: color 0.3s ease;
     position: relative;
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 20px;
 }
 
 .nav-link:hover,
@@ -87,8 +95,8 @@ body {
 
 /* Navigation icons */
 .nav-icon {
-    width: 50px;
-    height: 50px;
+    width: 65px;
+    height: 65px;
     object-fit: contain;
     transition: transform 0.3s ease;
 }
@@ -114,7 +122,7 @@ body {
 
 /* Main content */
 .main-content {
-    margin-top: 120px;
+    margin-top: 140px;
 }
 
 /* Hero section */
@@ -169,6 +177,7 @@ body {
 }
 
 .hero h1 {
+    font-family: 'Minecraft', 'Roboto', sans-serif;
     font-size: 6rem;
     color: #ffffff;
     margin-bottom: 30px;
@@ -278,7 +287,7 @@ body {
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 120px;
+        top: 140px;
         flex-direction: column;
         background-color: var(--white);
         width: 100%;
