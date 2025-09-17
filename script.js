@@ -1,4 +1,4 @@
-// Mobile navigation toggle
+// incase screen too small
 document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
@@ -8,13 +8,13 @@ document.addEventListener('DOMContentLoaded', function() {
         navMenu.classList.toggle('active');
     });
     
-    // Close mobile menu when clicking on a link
+    // close mobile menu when clicking on a link
     document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
         hamburger.classList.remove('active');
         navMenu.classList.remove('active');
     }));
     
-    // Close mobile menu when clicking outside
+    // close mobile menu when clicking outside
     document.addEventListener('click', function(event) {
         const isClickInsideNav = navMenu.contains(event.target);
         const isClickOnHamburger = hamburger.contains(event.target);
@@ -25,13 +25,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Animate words in story section
+    // animate words in story section - word by word
     setTimeout(() => {
         animateWords('animated-text', 80);
-    }, 2000); // Start after the story section fades in
+    }, 2000); 
 });
 
-// Smooth scroll for anchor links
+// Smooth scroll animation for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -112,8 +112,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Open modal when clicking on gallery photos
     galleryPhotos.forEach(photo => {
         photo.addEventListener('click', function() {
-            // Play the pastry sound
-            pastrySound.currentTime = 0; // Reset to beginning in case it's already playing
+            // Play  pastry sound
+            pastrySound.currentTime = 0; 
             pastrySound.play().catch(e => {
                 console.log('Audio play failed:', e);
             });
@@ -121,27 +121,19 @@ document.addEventListener('DOMContentLoaded', function() {
             modal.style.display = 'block';
             modalImg.src = this.getAttribute('data-full');
             modalCaption.textContent = this.alt;
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            document.body.style.overflow = 'hidden'; // stop background scrolling
         });
     });
     
-    // Close modal when clicking the X
+    // close modal when clicking the X
     closeModal.addEventListener('click', function() {
         modal.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Restore scrolling
+        document.body.style.overflow = 'auto'; // restore scrolling
     });
     
-    // Close modal when clicking outside the image
+    // close modal when clicking outside the image
     modal.addEventListener('click', function(event) {
         if (event.target === modal) {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restore scrolling
-        }
-    });
-    
-    // Close modal with Escape key
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape' && modal.style.display === 'block') {
             modal.style.display = 'none';
             document.body.style.overflow = 'auto'; // Restore scrolling
         }
